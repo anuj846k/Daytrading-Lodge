@@ -33,17 +33,17 @@ export const Testimonial21 = (props: Testimonial21Props) => {
   } as Props;
   
   return (
-    <section className="overflow-hidden py-16 md:py-24 lg:py-28 font-switzer ">
+    <section className="section overflow-hidden py-16 md:py-24 lg:py-28 font-switzer ">
       <div className="container mb-12 max-w-lg px-[10%] text-center md:mb-18 lg:mb-20">
-        <h1 className="mb-5 text-5xl flex flex-col  md:flex-row font-bold md:mb-6 md:text-7xl lg:text-8xl text-[#ca1c2b]">
+        <h1 className="mb-5 text-5xl md:-ml-30 -ml-0 flex flex-col  md:flex-row font-bold md:mb-6 md:text-1xl lg:text-[70px] text-[#ca1c2b]">
           {heading}
-          <span className="md:ml-4 text-[#2866C4]">Feedback</span>
+          <span className="md:ml-4  text-[#2866C4]">Feedback</span>
         </h1>
-        <p className="md:text-md">{description}</p>
+        <p className="md:text-md font-semibold">{description}</p>
       </div>
-      <div className="flex animate-loop-testimonials items-stretch">
+      <div className="flex animate-loop-testimonials hover:paused  items-stretch">
         {Array.from({ length: 2 }).map((_, index) => (
-          <div key={index} className="flex">
+          <div key={index} className="flex ">
             {testimonials.map((testimonial, index) => (
               <div
                 key={index}
