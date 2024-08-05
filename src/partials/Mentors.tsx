@@ -76,7 +76,7 @@ export const Layout366 = (props: Layout366Props) => {
             {cardsSmall.map((card, index) => (
               <div
                 key={index}
-                className="order-last flex flex-col items-stretch border  rounded-3xl border-border-primary md:grid md:grid-cols-2 lg:order-none bg-gradient-to-br from-blue-100 via-white to-blue-300 "
+                className="order-last flex flex-col items-stretch border  rounded-3xl border-border-primary md:grid md:grid-cols-2 lg:order-none  "
               >
                 <div className="flex w-full items-center justify-center ">
                   <img src={card.image.src} alt={card.image.alt} className="w-full rounded-tl-3xl rounded-bl-3xl h-[45vh] object-cover" />

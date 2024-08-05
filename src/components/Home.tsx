@@ -11,36 +11,36 @@ const Home = () => {
       <TradingViewWidget />
       {/* Hero section */}
       <div
-        className="h-[80vh] flex flex-col md:flex-row   "
+        className="h-[80vh] flex flex-col md:flex-row  md:mb-0 mb-20  "
         style={{
           backgroundSize: "cover",
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
         }}
       >
-        <div className="left w-full md:w-[70%] flex flex-col justify-center items-start p-8 md:p-14 b shadow-lg n">
+        <div className="left w-full md:w-[70%] flex flex-col justify-center md:items-start items-center p-8 md:p-14 b shadow-lg n">
           <div className="font-switzer  text-black">
-            <h1 className="text-4xl md:text-[70px] tracking-tighter font-bold leading-none">
-              <span className="text-[#2866C4] shadow-lg   ">'' Empower</span> Your
+            <h1 className="text-6xl  -mt-0 md:-mt-2 md:mb-7  md:text-[90px] md:leading-none font-bold font-switzer ">
+              <span className="text-[#ca1c2b]">Empower</span> Your{" "}
+              <span className="text-[#2866C4]">Trading</span> Journey
             </h1>
-            <h1 className="text-5xl font-bold md:text-[80px] leading-none mb-4">
-              <span className="text-8xl md:text-[120px] text-[#ca1c2b] leading-none">
-                Trading
-              </span>{" "}
-              Journey ''
-            </h1>
+            <img
+              className="md:hidden w-full rounded-full "
+              src="./man2.png"
+              alt=""
+            />
           </div>
           <div>
-            <p className="mt-6 md:mt-10 text-black text-xl md:text-2xl font-medium leading-relaxed font-switzer tracking-tight">
-              Your One-Step Solution For Establishing Your Currency Trading
-              Foundation.
+            <p className="-mt-9 md:mt-10 text-black text-lg  md:text-2xl font-medium leading-relaxed font-switzer tracking-tight">
+              Your <span className="bg-yellow-200 p-1">One-Step Solution</span>{" "}
+              For Establishing Your Currency Trading Foundation.
             </p>
           </div>
-          <div className="mt-6 md:mt-10 flex flex-col md:flex-row gap-4 md:gap-8">
+          <div className="mt-8 md:mt-10 flex  flex-col items-center justify-center md:flex-row gap-4 md:gap-8 ">
             <button className="text-white px-6 md:px-12 py-3 text-lg md:text-xl bg-[#ca1c2b] rounded-full shadow-lg hover:bg-[#b81a27] transition duration-300 hover:shadow-2xl transform hover:-translate-y-1">
-              Learn more
+              Download Brochure
             </button>
-            <button className="text-white px-6 md:px-12 py-3 text-lg md:text-xl bg-[#2866C4] rounded-full shadow-lg hover:bg-[#2459a3] transition duration-300 hover:shadow-2xl transform hover:-translate-y-1">
+            <button className="text-white px-16 md:px-12 py-3 text-lg md:text-xl bg-[#2866C4] rounded-full shadow-lg hover:bg-[#2459a3] transition duration-300 hover:shadow-2xl transform hover:-translate-y-1">
               Enroll now
             </button>
           </div>
@@ -57,9 +57,9 @@ const Home = () => {
 
       <Header19 />
       <Testimonial21 />
-      <Layout366/>
+      <Layout366 />
     </div>
   );
 };
 
-export default Home;  
+export default Home;
