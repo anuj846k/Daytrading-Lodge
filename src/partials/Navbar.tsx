@@ -1,10 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import { Button, useMediaQuery } from "@relume_io/relume-ui";
+import { Button} from "@relume_io/relume-ui";
 import type { ButtonProps } from "@relume_io/relume-ui";
 import { motion } from "framer-motion";
-// import { RxChevronDown } from "react-icons/rx";
 import { Link } from "react-router-dom";
 
 type ImageProps = {

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 
 const TradingViewWidget = () => {
   useEffect(() => {
@@ -40,12 +40,13 @@ const TradingViewWidget = () => {
       colorTheme: "dark",
       locale: "en",
     });
-    document
-      .querySelector(".tradingview-widget-container__widget")
-      .appendChild(script);
+
+    const container = document.querySelector(".tradingview-widget-container__widget");
+    if (container) {
+      container.appendChild(script);
+    }
 
     return () => {
-   
       if (script.parentNode) {
         script.parentNode.removeChild(script);
       }
@@ -55,7 +56,6 @@ const TradingViewWidget = () => {
   return (
     <div className="tradingview-widget-container">
       <div className="tradingview-widget-container__widget"></div>
-      
     </div>
   );
 };

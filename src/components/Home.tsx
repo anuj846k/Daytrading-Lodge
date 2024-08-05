@@ -1,4 +1,3 @@
-import React from "react";
 import { Navbar2 } from "../partials/Navbar";
 import { Testimonial21 } from "../partials/Testimonials";
 import { Header19 } from "./Cta";

@@ -1,10 +1,10 @@
-import React, { useEffect, useRef, memo } from "react";
+import  { useEffect, useRef, memo } from "react";
 
 function TradingViewWidget() {
-  const container = useRef();
+  const container = useRef<HTMLDivElement>(null);
 
-  useEffect(
-    () => {
+  useEffect(() => {
+    if (container.current) {
       const script = document.createElement("script");
       script.src = "https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js";
       script.type = "text/javascript";
@@ -27,12 +27,12 @@ function TradingViewWidget() {
         }`;
       container.current.innerHTML = "";
       container.current.appendChild(script);
-    },
-    []
-  );
+    }
+  }, []);
+
   return (
     <div
-      className="tradingview-widget-container hidden md:block border-zinc-400  p-4 border-2 rounded-md"
+      className="tradingview-widget-container hidden md:block border-zinc-400 p-4 border-2 rounded-md"
       ref={container}
     >
       {/* The TradingView widget will be rendered here */}
