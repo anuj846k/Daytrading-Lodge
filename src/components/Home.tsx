@@ -2,7 +2,9 @@ import { Navbar2 } from "../partials/Navbar";
 import { Testimonial21 } from "../partials/Testimonials";
 import { Header19 } from "./Cta";
 import TradingViewWidget from "../partials/ticker";
-import { Layout366 } from "../partials/Mentors";
+import { Layout366 } from "./Mentors";
+import { Contact5 } from "../partials/contact";
+import { Footer9 } from "../partials/footer";
 
 const Home = () => {
   return (
@@ -53,6 +55,8 @@ const Home = () => {
       <Header19 />
       <Testimonial21 />
       <Layout366 />
+      <Contact5/>
+      <Footer9/>
     </div>
   );
 };
