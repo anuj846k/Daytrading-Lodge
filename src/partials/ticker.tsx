@@ -37,7 +37,7 @@ const TradingViewWidget = () => {
       showSymbolLogo: true,
       isTransparent: false,
       displayMode: "adaptive",
-      colorTheme: "light",
+      colorTheme: "dark",
       locale: "en",
     });
     document

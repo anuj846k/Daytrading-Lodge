@@ -1,4 +1,7 @@
 import { BiSolidStar } from "react-icons/bi";
+import { FaStarHalfAlt, FaStar } from "react-icons/fa"; // Import a half-star icon
+
+
 
 type ImageProps = {
   src: string;
@@ -20,17 +23,22 @@ type Props = {
   testimonials: Testimonial[];
 };
 
-export type Testimonial21Props = React.ComponentPropsWithoutRef<"section"> & Partial<Props>;
+export type Testimonial21Props = React.ComponentPropsWithoutRef<"section"> &
+  Partial<Props>;
 
 export const Testimonial21 = (props: Testimonial21Props) => {
   const { heading, description, testimonials } = {
     ...Testimonial21Defaults,
     ...props,
   } as Props;
+  
   return (
-    <section className="overflow-hidden py-16 md:py-24 lg:py-28 ">
-      <div className="container mb-12 max-w-lg px-[5%] text-center md:mb-18 lg:mb-20">
-        <h1 className="mb-5 text-5xl font-bold md:mb-6 md:text-7xl lg:text-8xl">{heading}</h1>
+    <section className="overflow-hidden py-16 md:py-24 lg:py-28 font-switzer ">
+      <div className="container mb-12 max-w-lg px-[10%] text-center md:mb-18 lg:mb-20">
+        <h1 className="mb-5 text-5xl flex flex-col  md:flex-row font-bold md:mb-6 md:text-7xl lg:text-8xl text-[#ca1c2b]">
+          {heading}
+          <span className="md:ml-4 text-[#2866C4]">Feedback</span>
+        </h1>
         <p className="md:text-md">{description}</p>
       </div>
       <div className="flex animate-loop-testimonials items-stretch">
@@ -42,11 +50,21 @@ export const Testimonial21 = (props: Testimonial21Props) => {
                 className="mr-8 flex w-[25rem] min-w-[25rem] flex-col items-start justify-between border border-border-primary p-6 md:p-8"
               >
                 <div className="mb-6 flex">
-                  {Array(testimonial.numberOfStars)
-                    .fill(null)
-                    .map((_, starIndex) => (
-                      <BiSolidStar key={starIndex} className="mr-1 size-6" />
-                    ))}
+                  {Array(Math.floor(testimonial.numberOfStars)).fill(null).map((_, starIndex) => (
+                    <BiSolidStar
+                      key={starIndex}
+                      className="mr-1 size-6 text-yellow-400"
+                    />
+                  ))}
+                  {testimonial.numberOfStars % 1 !== 0 && (
+                    <FaStarHalfAlt className="mr-1 size-6 text-yellow-400" />
+                  )}
+                  {Array(5 - Math.ceil(testimonial.numberOfStars)).fill(null).map((_, starIndex) => (
+                    <FaStar
+                      key={starIndex}
+                      className="mr-1 size-6 text-gray-300"
+                    />
+                  ))}
                 </div>
                 <blockquote
                   className={`mb-5 before:content-['"'] after:content-['"'] md:mb-6 md:text-md`}
@@ -76,67 +94,78 @@ export const Testimonial21 = (props: Testimonial21Props) => {
 };
 
 export const Testimonial21Defaults: Testimonial21Props = {
-  heading: "Customer testimonials",
-  description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+  heading: "Community",
+  description:
+    "Hear from our successful students and industry professionals about their experiences with DayTrading Lodge.",
   testimonials: [
     {
-      testimonial:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare.",
+      testimonial: `Daytrading lodge is simply the best place to be. I've personally
+tried so many chat rooms and mentoring sites but whether you
+are completely new to trading or you have been around for
+some time, ForexSignals.com has the best mentors`,
       avatar: {
-        src: "https://relume-assets.s3.amazonaws.com/placeholder-image.svg",
-        alt: "Testimonial avatar 1",
+        src: "./person1.jpg",
+        alt: "Tomas Bakos",
       },
-      name: "Name Surname",
-      position: "Position",
-      companyName: "Company name",
+      name: "Tomas Bakos",
+      position: "Full-Time Trader",
+      companyName: "Independent Trader",
       numberOfStars: 5,
     },
     {
-      testimonial:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare.",
+      testimonial: `No hype, no BS, straight facts, set realistic expectations for
+newbies, and says it how it is, love his teaching style. Keep up
+the good work team:-)`,
       avatar: {
-        src: "https://relume-assets.s3.amazonaws.com/placeholder-image.svg",
-        alt: "Testimonial avatar 2",
+        src: "./person2.jpeg",
+        alt: "Arjun Reddy",
       },
-      name: "Name Surname",
-      position: "Position",
-      companyName: "Company name",
+      name: "Arjun Reddy",
+      position: "Financial Analyst",
+      companyName: "FinTech Solutions",
       numberOfStars: 5,
     },
     {
-      testimonial:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare.",
+      testimonial: `The information available is helpful and easy to understand as
+a beginner, you can reach out to the mentors and they respond
+promptly. The live trading sessions and breakdown of the
+charts and trades are very helpful. The analysis is great.`,
       avatar: {
-        src: "https://relume-assets.s3.amazonaws.com/placeholder-image.svg",
-        alt: "Testimonial avatar 3",
+        src: "./person3.jpg",
+        alt: "Michael Brown",
       },
-      name: "Name Surname",
-      position: "Position",
-      companyName: "Company name",
-      numberOfStars: 5,
+      name: "Jefery Thatcher",
+      position: "Professional Trader",
+      companyName: "TradeSmart Inc.",
+      numberOfStars: 4.5,
     },
     {
       testimonial:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare.",
+        `I have never written a review for a trading company before, I
+have been a member for less than 1 month but I must say they
+offer an incredible amount of training.`,
       avatar: {
-        src: "https://relume-assets.s3.amazonaws.com/placeholder-image.svg",
-        alt: "Testimonial avatar 3",
+        src: "person4.jpg",
+        alt: "Samuel John",
       },
-      name: "Name Surname",
-      position: "Position",
-      companyName: "Company name",
-      numberOfStars: 5,
+      name: "Suman Garg",
+      position: "Senior Trader",
+      companyName: "Market Movers",
+      numberOfStars: 4.5,
     },
     {
-      testimonial:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare.",
+      testimonial: `After researching months for a valuable forex tutorial platform
+I finally found it. . This platform is very good value for money
+compare to thousands of pound's others are charging. I am
+enjoying the learning content and the genuine community. I
+highly recommend this team.`,
       avatar: {
-        src: "https://relume-assets.s3.amazonaws.com/placeholder-image.svg",
-        alt: "Testimonial avatar 3",
+        src: "person5.jpg",
+        alt: "Suri Arora",
       },
-      name: "Name Surname",
-      position: "Position",
-      companyName: "Company name",
+      name: "Suri Arora",
+      position: "Senior Trader",
+      companyName: "Elite Trading Group",
       numberOfStars: 5,
     },
   ],
