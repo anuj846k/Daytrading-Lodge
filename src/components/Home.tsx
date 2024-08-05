@@ -11,16 +11,11 @@ const Home = () => {
       <TradingViewWidget />
       {/* Hero section */}
       <div
-        className="h-[80vh] flex flex-col md:flex-row  md:mb-0 mb-20  "
-        style={{
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          backgroundRepeat: "no-repeat",
-        }}
+        className="h-[80vh] flex flex-col md:flex-row  md:mb-0 mb-20"
       >
         <div className="left w-full md:w-[70%] flex flex-col justify-center md:items-start items-center p-8 md:p-14 b shadow-lg n">
           <div className="font-switzer  text-black">
-            <h1 className="text-6xl  -mt-0 md:-mt-2 md:mb-7  md:text-[90px] md:leading-none font-bold font-switzer ">
+            <h1 className="text-6xl  -mt-4 md:-mt-2 md:mb-7  md:text-[90px] md:leading-none font-bold font-switzer ">
               <span className="text-[#ca1c2b]">Empower</span> Your{" "}
               <span className="text-[#2866C4]">Trading</span> Journey
             </h1>
