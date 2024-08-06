@@ -23,14 +23,14 @@
       ...props,
     } as Props;
     return (
-      <header className="px-[5%] py-20 md:py-24 font-switzer">
+      <header className="px-[5%] md:py-24 font-switzer">
         <div className="container mx-auto">
           <div className="grid grid-cols-1  gap-x-48 gap-y-12 md:gap-y-16 lg:grid-cols-2 lg:items-center">
             <div className="order-2 lg:order-1">
               <Trading />
             </div>
             <div className="order-1 lg:order-2 p-4 lg:p-6 w-full lg:w-[80%] md:ml-48  rounded-3xl shadow-lg bg-yellow-50 ">
-              <h1 className="mb-5 text-3xl md:text-5xl font-bold md:mb-6 text-[#ca1c2b]">
+              <h1 className="mb-5 text-3xl md:text-5xl font-bold md:mb-6 text-[#D71E2E]">
                 {heading} <span className="text-[#2866C4]">Daytrading Lodge</span>
               </h1>
               <img src="./Trading.gif" alt="" className="md:hidden block h-40 w-40" />
@@ -40,7 +40,7 @@
                   <Button
                     key={index}
                     {...button}
-                    className="bg-[#ca1c2b] rounded-full border-none px-4 py-2 text-white"
+                    className="bg-[#D71E2E] rounded-full border-none px-4 py-2 text-white"
                   >
                     {button.title}
                   </Button>

@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { Input, Label, Checkbox, Textarea, Button } from "@relume_io/relume-ui";
 import type { ButtonProps } from "@relume_io/relume-ui";
-import { BiEnvelope, BiMap, BiPhone } from "react-icons/bi";
+import { BiEnvelope, BiPhone } from "react-icons/bi";
 
 type Props = {
   tagline: string;
@@ -18,7 +18,7 @@ type Props = {
 export type Contact5Props = React.ComponentPropsWithoutRef<"section"> & Partial<Props>;
 
 export const Contact5 = (props: Contact5Props) => {
-  const { tagline, heading, description, email, phone, address, button } = {
+  const { tagline, heading, description, email, phone, button } = {
     ...Contact5Defaults,
     ...props,
   } as Props;
@@ -56,10 +56,6 @@ export const Contact5 = (props: Contact5Props) => {
             <div className="flex items-center gap-4">
               <BiPhone className="size-6 flex-none" />
               <p>{phone}</p>
-            </div>
-            <div className="flex items-center gap-4">
-              <BiMap className="size-6 flex-none" />
-              <p>{address}</p>
             </div>
           </div>
         </div>
@@ -127,11 +123,10 @@ export const Contact5 = (props: Contact5Props) => {
 };
 
 export const Contact5Defaults: Contact5Props = {
-  tagline: "Tagline",
+  tagline: "Get in Touch",
   heading: "Contact us",
-  description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-  email: "hello@relume.io",
-  phone: "+1 (555) 000-0000",
-  address: "123 Sample St, Sydney NSW 2000 AU",
+  description: "We are here to help you with all your trading needs. Reach out to us anytime.",
+  email: "daytradinglodge@gmail.com",
+  phone: "+91 8826895731",
   button: { title: "Submit" },
 };

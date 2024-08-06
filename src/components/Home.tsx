@@ -4,7 +4,7 @@ import { Header19 } from "./Cta";
 import TradingViewWidget from "../partials/ticker";
 import { Layout366 } from "./Mentors";
 import { Contact5 } from "../partials/contact";
-import { Footer9 } from "../partials/footer";
+import Footer from "../partials/footer";
 
 const Home = () => {
   return (
@@ -12,13 +12,11 @@ const Home = () => {
       <Navbar2 />
       <TradingViewWidget />
       {/* Hero section */}
-      <div
-        className="h-[80vh] flex flex-col md:flex-row  md:mb-0 mb-20"
-      >
+      <div className="h-[80vh] flex flex-col md:flex-row  md:mb-0 mb-20">
         <div className="left w-full md:w-[70%] flex flex-col justify-center md:items-start items-center p-8 md:p-14 b shadow-lg n">
           <div className="font-switzer  text-black">
             <h1 className="text-6xl  -mt-4 md:-mt-2 md:mb-7  md:text-[90px] md:leading-none font-bold font-switzer ">
-              <span className="text-[#ca1c2b]">Empower</span> Your{" "}
+              <span className="text-[#D71E2E]">Empower</span> Your{" "}
               <span className="text-[#2866C4]">Trading</span> Journey
             </h1>
             <img
@@ -34,7 +32,7 @@ const Home = () => {
             </p>
           </div>
           <div className="mt-8 md:mt-10 flex  flex-col items-center justify-center md:flex-row gap-4 md:gap-8 ">
-            <button className="text-white px-6 md:px-12 py-3 text-lg md:text-xl bg-[#ca1c2b] rounded-full shadow-lg hover:bg-[#b81a27] transition duration-300 hover:shadow-2xl transform hover:-translate-y-1">
+            <button className="text-white px-6 md:px-12 py-3 text-lg md:text-xl bg-[#D71E2E] rounded-full shadow-lg hover:bg-[#b81a27] transition duration-300 hover:shadow-2xl transform hover:-translate-y-1">
               Download Brochure
             </button>
             <button className="text-white px-16 md:px-12 py-3 text-lg md:text-xl bg-[#2866C4] rounded-full shadow-lg hover:bg-[#2459a3] transition duration-300 hover:shadow-2xl transform hover:-translate-y-1">
@@ -51,12 +49,11 @@ const Home = () => {
           />
         </div>
       </div>
-
       <Header19 />
       <Testimonial21 />
       <Layout366 />
-      <Contact5/>
-      <Footer9/>
+      <Contact5 />
+      <Footer/>
     </div>
   );
 };
