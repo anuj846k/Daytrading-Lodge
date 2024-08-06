@@ -13,6 +13,11 @@
 
 
 */
+/* Gradient border */
+.border-gradient-to-r {
+  border-image: linear-gradient(to right, #4f6d7a, #f09c35);
+  border-image-slice: 1;
+}
 
 
 
