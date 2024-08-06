@@ -39,6 +39,12 @@ export const Testimonial21 = (props: Testimonial21Props) => {
   const handleTouchEnd = () => {
     document.querySelector('.animate-loop-testimonials')?.classList.remove('paused');
   };
+
+    // Function to handle touch cancel event
+    const handleTouchCancel = () => {
+      document.querySelector('.animate-loop-testimonials')?.classList.remove('paused');
+    };
+  
   
   return (
     <section className="section overflow-hidden py-30 font-switzer ">
@@ -49,8 +55,8 @@ export const Testimonial21 = (props: Testimonial21Props) => {
         </h1>
         <p className="md:text-md font-semibold">{description}</p>
       </div>
-      <div className="flex animate-loop-testimonials hover:paused  items-stretch"  onTouchStart={handleTouchStart}
-        onTouchEnd={handleTouchEnd}>
+      <div className="flex animate-loop-testimonials md:hover:paused items-stretch"  onTouchStart={handleTouchStart}
+        onTouchEnd={handleTouchEnd} onTouchCancel={handleTouchCancel}>
         {Array.from({ length: 2 }).map((_, index) => (
           <div key={index} className="flex ">
             {testimonials.map((testimonial, index) => (
