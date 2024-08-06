@@ -35,7 +35,7 @@ export const Layout366 = (props: Layout366Props) => {
     ...props,
   } as Props;
   return (
-    <section className="px-[5%] py-16 md:py-24 md:mt-20 lg:py-28 bg-gradient-to-tr from-blue-100 via-white to-blue-300">
+    <section className="px-[5%] py-16  md:py-24 md:mt-20 mt-20 lg:py-28 bg-gradient-to-tr from-blue-100 via-white to-blue-300">
       <div className="container mx-auto">
         <div className="mx-auto mb-12 w-full max-w-lg text-center md:mb-18 lg:mb-14">
           <p className="mb-3 font-semibold text-blue-600">{tagline}</p>

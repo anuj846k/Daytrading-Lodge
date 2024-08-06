@@ -53,7 +53,7 @@ const Footer = () => {
           <h2 className="font-bold text-xl lg:text-3xl mb-4">Get in Touch</h2>
           <ul className="text-sm lg:text-base list-none list-inside text-center lg:text-left">
             <li className="mb-2 lg:mb-0">+1-233-388-3838</li>
-            <li>contact@foodWing.com</li>
+            <li>daytradinglodge@gmail.com</li>
           </ul>
         </div>
       </div>

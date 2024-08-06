@@ -47,7 +47,7 @@ export const Testimonial21 = (props: Testimonial21Props) => {
   
   
   return (
-    <section className="section overflow-hidden py-30 font-switzer ">
+    <section className="section overflow-hidden md:py-30 py-10 font-switzer ">
       <div className="container mb-12 max-w-lg px-[10%] text-center md:mb-18 lg:mb-20">
         <h1 className="mb-5 text-5xl md:-ml-30 -ml-0 flex flex-col  md:flex-row font-bold md:mb-6 md:text-1xl lg:text-[70px] text-[#ca1c2b]">
           {heading}
