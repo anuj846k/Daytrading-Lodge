@@ -61,23 +61,15 @@ const Home = () => {
       <TradingViewWidget />
 
       {/* Hero section */}
-      <Suspense fallback={<Loader/>}>
+      <Suspense fallback={<Loader />}>
         <Hero />
-      </Suspense>
 
-      <Suspense fallback={<Loader />}>
         <LazyHeader19 />
-      </Suspense>
 
-      <Suspense fallback={<Loader />}>
         <LazyTestimonial21 />
-      </Suspense>
 
-      <Suspense fallback={<Loader />}>
         <LazyLayout366 />
-      </Suspense>
 
-      <Suspense fallback={<Loader />}>
         <LazyContact5 />
       </Suspense>
 
