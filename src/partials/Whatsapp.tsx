@@ -1,8 +1,8 @@
 const WhatsAppChatButton = () => {
   return (
-    <div className="fixed bottom-[20px] md:right-[20px] right-0  md:flex md:flex-row flex-col items-center z-10">
+    <div className="fixed bottom-[20px] md:right-[20px] right-2  md:flex md:flex-row flex-col items-center z-10">
       <a href="https://wa.me/918826895731" target="_blank">
-        <div className="bg-white border-2 border-green-500 text-black  rounded-full py-1 px-3 shadow-lg mr-2 transition duration hover:underline cursor-pointer">
+        <div className="bg-white border-2 border-green-500 text-black  rounded-full py-1 px-3 shadow-lg mr-2 transition duration hover:underline cursor-pointer hidden md:block">
           Chat with us
         </div>
       </a>
