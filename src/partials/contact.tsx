@@ -24,7 +24,7 @@ export const Contact5 = (props: Contact5Props) => {
   } as Props;
 
   const [nameInput, setNameInput] = useState("");
-  const [emailInput, setEmailInput] = useState("");
+  const [numberInput, setNumberInput] = useState("");
   const [messageInput, setMessageInput] = useState("");
   const [acceptTerms, setAcceptTerms] = useState<boolean | "indeterminate">(false);
 
@@ -39,7 +39,7 @@ export const Contact5 = (props: Contact5Props) => {
   };
 
   return (
-    <section className="px-[5%] py-16 md:py-24 lg:py-28 bg-gradient-to-tr from-gray-50 ">
+    <section className="px-[5%] py-16 md:py-24 lg:py-28 bg-gradient-to-tr from-gray-50">
       <div className="container mx-auto grid grid-cols-1 items-start gap-y-12 md:grid-cols-2 md:gap-x-12 lg:gap-x-20 lg:gap-y-16">
         <div>
           <p className="mb-3 font-semibold text-gray-700 md:mb-4">{tagline}</p>
@@ -64,12 +64,14 @@ export const Contact5 = (props: Contact5Props) => {
           </div>
         </div>
 
-        <form className="grid grid-cols-1 gap-6 bg-white p-8 rounded-lg border-[1px] shadow-lg" onSubmit={handleSubmit}>
+        <form className="grid grid-cols-1 gap-6 bg-white p-8 rounded-lg border-[1px] shadow-lg" onSubmit={handleSubmit} method="POST">
           <div className="grid w-full items-center">
             <Label htmlFor="name" className="mb-2 text-gray-700">
               Name  
             </Label>
             <Input
+              autoComplete="off"
+              required
               type="text"
               id="name"
               value={nameInput}
@@ -83,10 +85,11 @@ export const Contact5 = (props: Contact5Props) => {
               Phone Number(+91)
             </Label>
             <Input
-              type="email"
-              id="email"
-              value={emailInput}
-              onChange={(e) => setEmailInput(e.target.value)}
+              type="number"
+              id="number"
+              required
+              value={numberInput}
+              onChange={(e) => setNumberInput(e.target.value)}
               className="border-gray-300"
             />
           </div>
@@ -101,7 +104,9 @@ export const Contact5 = (props: Contact5Props) => {
               className="border-gray-300 min-h-[11.25rem] overflow-auto"
               value={messageInput}
               onChange={(e) => setMessageInput(e.target.value)}
+              required
             />
+
           </div>
 
           <div className="mb-3 flex items-center space-x-2 text-sm text-gray-600 md:mb-4">
@@ -120,7 +125,7 @@ export const Contact5 = (props: Contact5Props) => {
           </div>
 
           <div>
-            <Button {...button} className="px-8 py-2 -mr-14 rounded-full bg-[#2866C4] text-white font-semibold shadow-lg hover:bg-[#ca1c2b] transition duration-300 ease-in-out transform hover:scale-105 border-none">
+            <Button  type="submit" {...button} className="px-8 py-2 -mr-14 rounded-full bg-[#2866C4] text-white font-semibold shadow-lg hover:bg-[#ca1c2b] transition duration-300 ease-in-out transform hover:scale-105 border-none">
               {button.title}
             </Button>
           </div>

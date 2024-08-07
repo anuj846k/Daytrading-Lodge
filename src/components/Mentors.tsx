@@ -15,7 +15,7 @@ type CardBaseProps = {
 
 type CardsSmallProps = CardBaseProps & {
   button: ButtonProps;
-  taglineColor: string; // Add this property
+  taglineColor: string; 
 };
 
 type Props = {
@@ -34,7 +34,7 @@ export const Layout366 = (props: Layout366Props) => {
     ...props,
   } as Props;
   return (
-    <section className="px-[5%] py-16  md:py-24 md:mt-20 mt-20 lg:py-28 bg-gradient-to-tr from-blue-100 via-white to-blue-300">
+    <section className="px-[5%] py-16  md:py-24 md:mt-20 mt-20 lg:py-28  bg-gradient-to-tr from-blue-100 via-white  to-blue-300">
       <div className="container mx-auto">
         <div className="mx-auto mb-12 w-full max-w-lg text-center md:mb-18 lg:mb-14">
           <p className="mb-3 font-semibold text-blue-600">{tagline}</p>
@@ -49,7 +49,7 @@ export const Layout366 = (props: Layout366Props) => {
           {cardsSmall.map((card, index) => (
             <div
               key={index}
-              className="flex flex-col items-stretch border-2  rounded-2xl overflow-hidden shadow-lg bg-white transition-transform duration-300 hover:shadow-2xl hover:scale-105  hover:bg-gradient-to-br hover:from-blue-100 hover:to-blue-400"
+              className="flex flex-col items-stretch  rounded-2xl overflow-hidden shadow-lg bg-white transition-transform duration-300 hover:shadow-2xl hover:scale-105  md:hover:bg-gradient-to-br md:hover:from-white md:hover:to-amber-50"
             >
               <div className="flex w-full items-center justify-center cursor-pointer ">
                 <img
