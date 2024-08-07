@@ -5,6 +5,7 @@ import Footer from "../partials/footer";
 import Hero from "./Hero";
 import InitialLoading from "../partials/InitialLoading";
 import Loader from "../partials/Loader";
+import WhatsAppChatButton from "../partials/Whatsapp";
 
 // Lazy load components
 const LazyHeader19 = lazy(() =>
@@ -72,6 +73,7 @@ const Home = () => {
 
         <LazyContact5 />
       </Suspense>
+      <WhatsAppChatButton/>
 
       <Footer />
     </div>
