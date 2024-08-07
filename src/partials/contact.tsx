@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Input, Label, Checkbox, Textarea, Button } from "@relume_io/relume-ui";
 import type { ButtonProps } from "@relume_io/relume-ui";
 import { BiEnvelope, BiPhone } from "react-icons/bi";
+import { Contact5Defaults } from "../constants/ContactDefault";
 
 type Props = {
   tagline: string;
@@ -127,13 +128,4 @@ export const Contact5 = (props: Contact5Props) => {
       </div>
     </section>
   );
-};
-
-export const Contact5Defaults: Contact5Props = {
-  tagline: "Get in Touch",
-  heading: "Contact us",
-  description: "We are here to help you with all your trading needs. Reach out to us anytime.",
-  email: "daytradinglodge@gmail.com",
-  phone: "+91 8826895731",
-  button: { title: "Submit" },
 };

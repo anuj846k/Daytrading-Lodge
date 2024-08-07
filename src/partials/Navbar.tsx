@@ -5,6 +5,7 @@ import { Button} from "@relume_io/relume-ui";
 import type { ButtonProps } from "@relume_io/relume-ui";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
+import {Navbar2Defaults} from "../constants/NavbarDefault";
 
 type ImageProps = {
   url?: string;
@@ -111,26 +112,9 @@ export const Navbar2 = (props: Navbar2Props) => {
   );
 };
 
-export const Navbar2Defaults: Navbar2Props = {
-  logo: {
-    url: "#",
-    src: "./logo.png",
-    alt: "Logo image",
-  },
-  navLinks: [
-    { title: "Home", url: "/" },
-    { title: "About", url: "/about" },
-    { title: "Services", url: "/services" },
-    { title: "Contact", url: "/contact" },
-  ],
-  buttons: [
-    {
-      title: "Join Us",
-      size: "sm",
-    },
-  ],
-};
 
+
+Navbar2.displayName = "Navbar2";
 const topLineVariants = {
   open: {
     translateY: 8,
@@ -173,5 +157,3 @@ const bottomLineVariants = {
     transition: { duration: 0.2 },
   },
 };
-
-Navbar2.displayName = "Navbar2";

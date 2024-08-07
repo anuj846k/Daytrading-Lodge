@@ -1,59 +1,87 @@
+import { lazy, Suspense, useState, useEffect } from "react";
 import { Navbar2 } from "../partials/Navbar";
-import { Testimonial21 } from "../partials/Testimonials";
-import { Header19 } from "./Cta";
 import TradingViewWidget from "../partials/ticker";
-import { Layout366 } from "./Mentors";
-import { Contact5 } from "../partials/contact";
 import Footer from "../partials/footer";
+import Hero from "./Hero";
+import InitialLoading from "../partials/InitialLoading";
+import Loader from "../partials/Loader";
+
+// Lazy load components
+const LazyHeader19 = lazy(() =>
+  import("./Cta").then((module) => ({ default: module.Header19 }))
+);
+const LazyTestimonial21 = lazy(() =>
+  import("../partials/Testimonials").then((module) => ({
+    default: module.Testimonial21,
+  }))
+);
+const LazyLayout366 = lazy(() =>
+  import("./Mentors").then((module) => ({ default: module.Layout366 }))
+);
+const LazyContact5 = lazy(() =>
+  import("../partials/contact").then((module) => ({ default: module.Contact5 }))
+);
+
+// Loader component
 
 const Home = () => {
+  const [initialLoading, setInitialLoading] = useState(true);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const intialLoadTimer = setTimeout(() => {
+      setInitialLoading(false);
+    }, 3000);
+    // Preload all the lazy-loaded components
+    const loadComponents = async () => {
+      await Promise.all([
+        import("./Cta"),
+        import("../partials/Testimonials"),
+        import("./Mentors"),
+        import("../partials/contact"),
+        import("../components/Hero"),
+      ]);
+      setLoading(false);
+    };
+    loadComponents();
+    return () => clearTimeout(intialLoadTimer);
+  }, []);
+
+  if (initialLoading) {
+    return <InitialLoading />;
+  }
+
+  if (loading) {
+    return <Loader />;
+  }
+
   return (
-    <div className="h-full w-full ">
+    <div className="h-full w-full">
       <Navbar2 />
       <TradingViewWidget />
-      {/* Hero section */}
-      <div className="h-[80vh] flex flex-col md:flex-row  md:mb-0 mb-20">
-        <div className="left w-full md:w-[70%] flex flex-col justify-center md:items-start items-center p-8 md:p-14 b shadow-lg n">
-          <div className="font-switzer  text-black">
-            <h1 className="text-6xl  -mt-4 md:-mt-2 md:mb-7  md:text-[90px] md:leading-none font-bold font-switzer ">
-              <span className="text-[#D71E2E]">Empower</span> Your{" "}
-              <span className="text-[#2866C4]">Trading</span> Journey
-            </h1>
-            <img
-              className="md:hidden w-full rounded-full "
-              src="./man2.png"
-              alt=""
-            />
-          </div>
-          <div>
-            <p className="-mt-9 md:mt-10 text-black text-lg  md:text-2xl font-medium leading-relaxed font-switzer tracking-tight">
-              Your <span className="bg-yellow-200 p-1">One-Step Solution</span>{" "}
-              For Establishing Your Currency Trading Foundation.
-            </p>
-          </div>
-          <div className="mt-8 md:mt-10 flex  flex-col items-center justify-center md:flex-row gap-4 md:gap-8 ">
-            <button className="text-white px-6 md:px-12 py-3 text-lg md:text-xl bg-[#D71E2E] rounded-full shadow-lg hover:bg-[#b81a27] transition duration-300 hover:shadow-2xl transform hover:-translate-y-1">
-              Download Brochure
-            </button>
-            <button className="text-white px-16 md:px-12 py-3 text-lg md:text-xl bg-[#2866C4] rounded-full shadow-lg hover:bg-[#2459a3] transition duration-300 hover:shadow-2xl transform hover:-translate-y-1">
-              Enroll now
-            </button>
-          </div>
-        </div>
 
-        <div className="w-full md:w-[60%] flex justify-center items-center md:p-0 p-8">
-          <img
-            src="./bitcoin.gif"
-            alt="Trading animation"
-            className="h-full shadow-lg hidden md:block"
-          />
-        </div>
-      </div>
-      <Header19 />
-      <Testimonial21 />
-      <Layout366 />
-      <Contact5 />
-      <Footer/>
+      {/* Hero section */}
+      <Suspense fallback={<Loader/>}>
+        <Hero />
+      </Suspense>
+
+      <Suspense fallback={<Loader />}>
+        <LazyHeader19 />
+      </Suspense>
+
+      <Suspense fallback={<Loader />}>
+        <LazyTestimonial21 />
+      </Suspense>
+
+      <Suspense fallback={<Loader />}>
+        <LazyLayout366 />
+      </Suspense>
+
+      <Suspense fallback={<Loader />}>
+        <LazyContact5 />
+      </Suspense>
+
+      <Footer />
     </div>
   );
 };
