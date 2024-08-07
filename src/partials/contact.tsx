@@ -32,7 +32,7 @@ export const Contact5 = (props: Contact5Props) => {
     event.preventDefault();
     console.log({
       nameInput,
-      emailInput,
+      numberInput,
       messageInput,
       acceptTerms,
     });
