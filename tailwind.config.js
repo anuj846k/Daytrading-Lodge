@@ -8,6 +8,9 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      maxWidth:{
+        '7xl':'80rem'
+      },
       boxShadow: {
         'text': '0 1px 2px rgba(0, 0, 0, 0.7)',
       },
