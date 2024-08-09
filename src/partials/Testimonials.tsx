@@ -1,8 +1,17 @@
-import { BiSolidStar } from "react-icons/bi";
-import { FaStarHalfAlt, FaStar } from "react-icons/fa"; // Import a half-star icon
-import { Testimonial21Defaults } from "../constants/TestimonialsDeafult";
+"use client";
 
-
+import type { CarouselApi } from "@relume_io/relume-ui";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@relume_io/relume-ui";
+import clsx from "clsx";
+import { useEffect, useState } from "react";
+import { Testimonial23Defaults } from "../constants/TestimonialsDeafult";
+import { MdStar, MdStarHalf } from "react-icons/md";
 
 type ImageProps = {
   src: string;
@@ -10,7 +19,7 @@ type ImageProps = {
 };
 
 type Testimonial = {
-  testimonial: string;
+  quote: string;
   avatar: ImageProps;
   name: string;
   position: string;
@@ -24,92 +33,116 @@ type Props = {
   testimonials: Testimonial[];
 };
 
-export type Testimonial21Props = React.ComponentPropsWithoutRef<"section"> &
+export type Testimonial23Props = React.ComponentPropsWithoutRef<"section"> &
   Partial<Props>;
 
-export const Testimonial21 = (props: Testimonial21Props) => {
+export const Testimonial23 = (props: Testimonial23Props) => {
   const { heading, description, testimonials } = {
-    ...Testimonial21Defaults,
+    ...Testimonial23Defaults,
     ...props,
   } as Props;
 
-  const handleTouchStart = () => {
-    document.querySelector('.animate-loop-testimonials')?.classList.add('paused');
-  };
+  const [api, setApi] = useState<CarouselApi>();
+  const [current, setCurrent] = useState(0);
 
-  const handleTouchEnd = () => {
-    document.querySelector('.animate-loop-testimonials')?.classList.remove('paused');
-  };
+  useEffect(() => {
+    if (!api) {
+      return;
+    }
+    setCurrent(api.selectedScrollSnap() + 1);
+    api.on("select", () => {
+      setCurrent(api.selectedScrollSnap() + 1);
+    });
+  }, [api]);
 
-    // Function to handle touch cancel event
-    const handleTouchCancel = () => {
-      document.querySelector('.animate-loop-testimonials')?.classList.remove('paused');
-    };
-  
-  
-  return ( 
-    <section className="section overflow-hidden md:py-30 py-10 font-switzer select-none ">
-      <div className="container mb-12 max-w-lg px-[10%] text-center md:mb-18 lg:mb-20">
-        <h1 className="mb-5 text-5xl md:-ml-30 -ml-0 flex flex-col  md:flex-row font-bold md:mb-6 md:text-1xl lg:text-[70px] text-[#ca1c2b]">
-          {heading}
-          <span className="md:ml-4  text-[#2866C4]">Feedback</span>
-        </h1>
-        <p className="md:text-md font-semibold">{description}</p>
+  const renderStars = (rating: number) => {
+    const fullStars = Math.floor(rating);
+    const halfStar = rating % 1 >= 0.5;
+    const totalStars = 5;
+
+    return (
+      <div className="flex">
+        {[...Array(fullStars)].map((_, index) => (
+          <MdStar key={index} size={30} className="text-yellow-500" />
+        ))}
+        {halfStar && <MdStarHalf size={30} className="text-yellow-500" />}
+        {[...Array(totalStars - Math.ceil(rating))].map((_, index) => (
+          <MdStar
+            key={index + fullStars + (halfStar ? 1 : 0)}
+            className="text-neutral-darker"
+          />
+        ))}
       </div>
-      <div className="flex animate-loop-testimonials md:hover:paused items-stretch"  onTouchStart={handleTouchStart}
-        onTouchEnd={handleTouchEnd} onTouchCancel={handleTouchCancel}>
-        {Array.from({ length: 2 }).map((_, index) => (
-          <div key={index} className="flex ">
+    );
+  };
+
+  return (
+    <section className="px-[5%] py-16 md:py-24 lg:py-28 font-switzer">
+      <div className="container">
+        <div className="container  mb-12 max-w-lg text-center md:mb-18 lg:mb-20">
+          <h1 className="mb-5 text-5xl font-bold md:mb-6 md:text-9xl lg:text-10xl text-[#ca1c2b]">
+            {heading}
+          </h1>
+          <p className="md:text-lg">{description}</p>
+        </div>
+
+        <Carousel
+          setApi={setApi}
+          opts={{
+            loop: true,
+            duration: 20,
+            align: "start",
+          }}
+          className="overflow-hidden bg-background-primary md:px-3.5"
+        >
+          <CarouselContent className="ml-0 md:flex-row">
             {testimonials.map((testimonial, index) => (
-              <div
+              <CarouselItem
                 key={index}
-                className="mr-8 flex w-[19rem] md:min-w-[25rem] flex-col items-start justify-between border border-border-primary p-6 md:p-8 rounded-md bg-amber-50"
+                className="mr-4 basis-full pl-0 md:mr-0 md:basis-1/2 md:px-4 lg:basis-1/3"
               >
-                <div className="mb-6 flex">
-                  {Array(Math.floor(testimonial.numberOfStars)).fill(null).map((_, starIndex) => (
-                    <BiSolidStar
-                      key={starIndex}
-                      className="mr-1 size-6 text-yellow-400"
+                <div className="flex bg-amber-50 h-[40vh] w-full flex-col items-start justify-between border border-border-primary p-6 md:p-8">
+                  <div>{renderStars(testimonial.numberOfStars)}</div>
+
+                  <blockquote className="mb-5 md:mb-6 md:text-md">
+                    {testimonial.quote}
+                  </blockquote>
+                  <div className="flex w-full flex-col items-start text-left md:w-fit md:flex-row md:items-center">
+                    <img
+                      src={testimonial.avatar.src}
+                      alt={testimonial.avatar.alt}
+                      className="mb-4 mr-0 size-12 min-h-12 min-w-12 rounded-full object-cover md:mb-0 md:mr-4"
                     />
-                  ))}
-                  {testimonial.numberOfStars % 1 !== 0 && (
-                    <FaStarHalfAlt className="mr-1 size-6 text-yellow-400" />
-                  )}
-                  {Array(5 - Math.ceil(testimonial.numberOfStars)).fill(null).map((_, starIndex) => (
-                    <FaStar
-                      key={starIndex}
-                      className="mr-1 size-6 text-gray-300"
-                    />
-                  ))}
-                </div>
-                <blockquote
-                  className={`mb-5 before:content-['"'] after:content-['"'] md:mb-6 md:text-md`}
-                >
-                  {testimonial.testimonial}
-                </blockquote>
-                <div className="flex w-full flex-col items-start text-left md:w-fit md:flex-row md:items-center">
-                  <img
-                    src={testimonial.avatar.src}
-                    alt={testimonial.avatar.alt}
-                    loading="lazy"
-                    className="mb-4 mr-0 size-12 min-h-12 min-w-12 rounded-full object-cover md:mb-0 md:mr-4"
-                  />
-                  <div>
-                    <p className="font-semibold">{testimonial.name}</p>
-                    <p>
-                      {testimonial.position}, {testimonial.companyName}
-                    </p>
+                    <div>
+                      <p className="font-semibold">{testimonial.name}</p>
+                      <p>
+                        {testimonial.position}, {testimonial.companyName}
+                      </p>
+                    </div>
                   </div>
                 </div>
-              </div>
+              </CarouselItem>
             ))}
-          </div>
-        ))}
+          </CarouselContent>
+          <CarouselPrevious className="-mt-2 hidden bg-white md:flex md:size-12 lg:size-14" />
+          <CarouselNext className="-mt-2 hidden bg-white md:flex md:size-12 lg:size-14" />
+        </Carousel>
+        <div className="flex items-center justify-center pt-[30px] sm:pt-[30px]">
+          {testimonials.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => api?.scrollTo(index)}
+              className={clsx(
+                "relative mx-[3px] inline-block size-2 rounded-full",
+                {
+                  "bg-black": current === index + 1,
+                  "bg-neutral-darker/40": current !== index + 1,
+                }
+              )}
+            />
+          ))}
+        </div>
       </div>
     </section>
   );
 };
-
-
-
-Testimonial21.displayName = "Testimonial21";

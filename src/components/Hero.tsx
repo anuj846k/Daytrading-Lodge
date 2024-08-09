@@ -8,10 +8,11 @@ const Hero = () => {
         <div className="font-switzer text-black ">
           <h1
             id="hero-heading"
-            className="text-4xl -mt-6 md:-mt-2 md:mb-7 mb-6 md:text-[90px] md:leading-none font-bold font-switzer"
+            className="text-4xl -mt-6 md:-mt-2 md:mb-7 mb-6 md:text-[120px] md:leading-none font-bold font-switzer"
           >
             <span className="text-[#D71E2E]">Empower</span> Your{" "}
             <span className="text-[#2866C4]">Trading</span> Journey
+            
           </h1>
           <img
             className="md:hidden w-full rounded-full h-auto mb-12 "

@@ -13,7 +13,7 @@ const LazyHeader19 = lazy(() =>
 );
 const LazyTestimonial21 = lazy(() =>
   import("../partials/Testimonials").then((module) => ({
-    default: module.Testimonial21,
+    default: module.Testimonial23,
   }))
 );
 const LazyLayout366 = lazy(() =>

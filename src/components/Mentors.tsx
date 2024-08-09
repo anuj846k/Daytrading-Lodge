@@ -38,12 +38,12 @@ export const Layout366 = (props: Layout366Props) => {
       <div className="container mx-auto">
         <div className="mx-auto mb-12 w-full max-w-lg text-center md:mb-18 lg:mb-14">
           <p className="mb-3 font-semibold text-blue-600">{tagline}</p>
-          <h2 className="mb-5 text-5xl font-bold md:mb-6 md:text-7xl lg:text-8xl text-gray-900">
+          <h2 className="mb-5 text-5xl font-bold md:mb-6 md:text-8xl lg:text-10xl text-gray-900">
             <span className="text-[#2866C4]">Elevate</span> Your{" "}
             <span className="text-[#ca1c2b]">Trading Journey</span> with Our
             Expert Mentors
           </h2>
-          <p className="md:text-md text-gray-700">{description}</p>
+          <p className="md:text-lg text-gray-700">{description}</p>
         </div>
         <div className="grid grid-cols-1 gap-6 md:gap-8 lg:grid-cols-3">
           {cardsSmall.map((card, index) => (
