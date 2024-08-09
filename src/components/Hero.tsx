@@ -1,7 +1,7 @@
 const Hero = () => {
   return (
     <section
-      className="h-[80vh] flex flex-col md:flex-row md:mb-0 mb-10 bg-gradient-to-br from-gray-50 to-gray-100"
+      className="md:min-h-[80vh] min-h-screen flex flex-col md:flex-row md:mb-0 mb-20 bg-gradient-to-br from-gray-50 to-gray-100"
       aria-labelledby="hero-heading"
     >
       <div className="left w-full md:w-[70%] flex flex-col justify-center md:items-start items-center p-8 md:p-14 shadow-lg">
