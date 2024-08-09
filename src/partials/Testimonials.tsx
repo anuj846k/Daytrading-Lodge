@@ -1,6 +1,7 @@
 "use client";
 
 import type { CarouselApi } from "@relume_io/relume-ui";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 import {
   Carousel,
   CarouselContent,
@@ -108,10 +109,12 @@ export const Testimonial23 = (props: Testimonial23Props) => {
                     {testimonial.quote}
                   </blockquote>
                   <div className="flex w-full flex-col items-start text-left md:w-fit md:flex-row md:items-center">
-                    <img
+                    <LazyLoadImage
+                      
                       src={testimonial.avatar.src}
                       alt={testimonial.avatar.alt}
-                      className="mb-4 mr-0 size-12 min-h-12 min-w-12 rounded-full object-cover md:mb-0 md:mr-4"
+                      className="mb-4 mr-0 size-12 min-h-12 min-w-12
+                      rounded-full object-cover md:mb-0 md:mr-4"
                     />
                     <div>
                       <p className="font-semibold">{testimonial.name}</p>

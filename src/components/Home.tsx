@@ -73,7 +73,7 @@ const Home = () => {
 
         <LazyContact5 />
       </Suspense>
-      <WhatsAppChatButton/>
+      <WhatsAppChatButton />
 
       <Footer />
     </div>
