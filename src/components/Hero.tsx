@@ -1,18 +1,10 @@
 import { Link } from "react-router-dom";
+import brochure from "../assets/trading_brochure.pdf";
 const Hero = () => {
   const phoneNumber = "918826895731";
   const message = encodeURIComponent("I want to enroll in your mentorship program");
   const whatsappUrl = `https://wa.me/${phoneNumber}?text=${message}`;
-
-  const handleDownload = () => {
-    const pdfUrl = '../assets/trading_brochure.pdf';
-    const link = document.createElement('a');
-    link.href = pdfUrl;
-    link.setAttribute('download', 'trading_brochure.pdf');
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-  };
+ 
 
   return (
     <section
@@ -49,9 +41,9 @@ const Hero = () => {
           <button
             className="text-white px-8 md:px-12 py-3 text-lg md:text-xl bg-[#D71E2E] rounded-full shadow-lg hover:bg-[#b81a27] transition duration-300 hover:shadow-2xl transform hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#b81a27]"
             aria-label="Download Brochure"
-            onClick={handleDownload}
+            
           >
-            Download Brochure
+          <a href={brochure} target="_blank" download={brochure}>Download Brochure</a>
           </button>
          <Link to={whatsappUrl} target="_blank">
          <button
