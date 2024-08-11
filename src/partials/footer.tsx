@@ -5,7 +5,9 @@ import { FaWhatsapp, FaInstagram, FaYoutube } from "react-icons/fa6";
 
 const Footer = () => {
   const phoneNumber = "918826895731";
-  const message = encodeURIComponent("I want to enroll in your mentorship program");
+  const message = encodeURIComponent(
+    "I want to enroll in your mentorship program"
+  );
   const whatsappUrl = `https://wa.me/${phoneNumber}?text=${message}`;
   return (
     <footer className="bg-gray-900 text-gray-300 py-12 px-4">
@@ -36,7 +38,10 @@ const Footer = () => {
               />
             </Link>
             <Link to="https://www.youtube.com/@daytradinglodge">
-              <FaYoutube className="mx-2 cursor-pointer hover:text-red-500" size={24} />
+              <FaYoutube
+                className="mx-2 cursor-pointer hover:text-red-500"
+                size={24}
+              />
             </Link>
           </div>
         </div>
@@ -55,7 +60,10 @@ const Footer = () => {
         <div className="flex flex-col items-center mb-8 lg:mb-0">
           <h2 className="font-bold text-xl lg:text-3xl mb-4">Get in Touch</h2>
           <ul className="text-sm lg:text-base list-none list-inside text-center lg:text-left">
-            <li className="mb-2 lg:mb-0">+91 8826895731</li>
+            <li className="mb-2 lg:mb-0">
+              <a href="tel:+918826895731">+91 8826895731</a>
+            </li>
+
             <li>daytradinglodge@gmail.com</li>
           </ul>
         </div>
