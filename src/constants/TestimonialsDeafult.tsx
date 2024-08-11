@@ -1,4 +1,22 @@
-import { Testimonial23Props } from "../partials/Testimonials";
+type ImageProps = {
+  src: string;
+  alt?: string ;
+};
+
+type Testimonial = {
+  quote: string;
+  avatar: ImageProps;
+  name: string;
+  position: string;
+  companyName: string;
+  numberOfStars: number;
+};
+
+export type Testimonial23Props = {
+  heading: string;
+  description: string;
+  testimonials: Testimonial[];
+};
 
 export const Testimonial23Defaults: Testimonial23Props = {
   heading: "Community",
@@ -17,9 +35,7 @@ export const Testimonial23Defaults: Testimonial23Props = {
       numberOfStars: 5,
     },
     {
-      quote: `No hype, no BS, straight facts, set realistic expectations for
-  newbies, and says it how it is, love his teaching style. Keep up
-  the good work team:-)`,
+      quote: `No hype, no BS, straight facts, set realistic expectations for newbies, and says it how it is, love his teaching style. Keep up the good work team:-)`,
       avatar: {
         src: "./person2.jpeg",
         alt: "Arjun Reddy",
@@ -41,9 +57,7 @@ export const Testimonial23Defaults: Testimonial23Props = {
       numberOfStars: 4.5,
     },
     {
-      quote: `I have never written a review for a trading company before, I
-  have been a member for less than 1 month but I must say they
-  offer an incredible amount of training.`,
+      quote: `I have never written a review for a trading company before, I have been a member for less than 1 month but I must say they offer an incredible amount of training.`,
       avatar: {
         src: "person4.jpg",
         alt: "Samuel John",
@@ -54,9 +68,7 @@ export const Testimonial23Defaults: Testimonial23Props = {
       numberOfStars: 5,
     },
     {
-      quote: `After researching months for a valuable forex tutorial platform
-  I finally found it. I am
-  enjoying the learning content and the genuine community.`,
+      quote: `After researching months for a valuable forex tutorial platform I finally found it. I am enjoying the learning content and the genuine community.`,
       avatar: {
         src: "person5.jpg",
         alt: "Suri Arora",

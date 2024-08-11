@@ -20,16 +20,16 @@
 
 
 
-  @font-face {
-    font-family: 'Switzer';
-    src: url('../Switzer-Variable.ttf') format('truetype');
+    @font-face {
+      font-family: 'Switzer';
+      src: url('../Switzer-Variable.ttf') format('truetype');
+      
+      font-style:normal;  
+    }
     
-    font-style:normal;
-  }
-  
-  .font-switzer {
-    font-family:  'Gilroy'
-  }
+    .font-switzer {
+      font-family: Switzer;
+    }
 
   
   

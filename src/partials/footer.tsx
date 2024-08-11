@@ -4,6 +4,9 @@ import { Link } from "react-router-dom";
 import { FaWhatsapp, FaInstagram, FaYoutube } from "react-icons/fa6";
 
 const Footer = () => {
+  const phoneNumber = "918826895731";
+  const message = encodeURIComponent("I want to enroll in your mentorship program");
+  const whatsappUrl = `https://wa.me/${phoneNumber}?text=${message}`;
   return (
     <footer className="bg-gray-900 text-gray-300 py-12 px-4">
       <div className="container mx-auto flex flex-col lg:flex-row lg:justify-between lg:items-start">
@@ -17,7 +20,7 @@ const Footer = () => {
             Trading squad built by the best for the aspirant
           </p>
           <div className="flex justify-evenly w-full mt-4">
-            <Link to="https://www.linkedin.com/in/anuj-kumar-6aa13b264/">
+            <Link to={whatsappUrl} target="_blank">
               <FaWhatsapp
                 className="mx-2 cursor-pointer hover:text-green-500"
                 size={24}
@@ -28,12 +31,12 @@ const Footer = () => {
               target="_blank"
             >
               <FaInstagram
-                className="mx-2 cursor-pointer hover:text-yellow-200"
+                className="mx-2 cursor-pointer hover:text-orange-400"
                 size={24}
               />
             </Link>
             <Link to="https://www.youtube.com/@daytradinglodge">
-              <FaYoutube className="mx-2 cursor-pointer" size={24} />
+              <FaYoutube className="mx-2 cursor-pointer hover:text-red-500" size={24} />
             </Link>
           </div>
         </div>

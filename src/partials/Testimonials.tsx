@@ -1,60 +1,49 @@
-"use client";
-
-import type { CarouselApi } from "@relume_io/relume-ui";
-import { LazyLoadImage } from "react-lazy-load-image-component";
+import React, { useState, useEffect } from "react";
 import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@relume_io/relume-ui";
-import clsx from "clsx";
-import { useEffect, useState } from "react";
-import { Testimonial23Defaults } from "../constants/TestimonialsDeafult";
-import { MdStar, MdStarHalf } from "react-icons/md";
+  MdStar,
+  MdStarHalf,
+  MdArrowBack,
+  MdArrowForward,
+} from "react-icons/md";
+import { useSwipeable } from "react-swipeable";
 
-type ImageProps = {
-  src: string;
-  alt?: string;
-};
-
-type Testimonial = {
-  quote: string;
-  avatar: ImageProps;
-  name: string;
-  position: string;
-  companyName: string;
-  numberOfStars: number;
-};
-
-type Props = {
+interface Props {
   heading: string;
   description: string;
-  testimonials: Testimonial[];
-};
+  testimonials: {
+    numberOfStars: number;
+    quote: string;
+    avatar: {
+      src: string;
+      alt?: string;
+    };
+    name: string;
+    position: string;
+    companyName: string;
+  }[];
+}
 
-export type Testimonial23Props = React.ComponentPropsWithoutRef<"section"> &
-  Partial<Props>;
-
-export const Testimonial23 = (props: Testimonial23Props) => {
-  const { heading, description, testimonials } = {
-    ...Testimonial23Defaults,
-    ...props,
-  } as Props;
-
-  const [api, setApi] = useState<CarouselApi>();
+const Testimonial23: React.FC<Props> = ({
+  heading,
+  description,
+  testimonials,
+}) => {
   const [current, setCurrent] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
 
+  // Effect to check screen size and update `isMobile` state
   useEffect(() => {
-    if (!api) {
-      return;
-    }
-    setCurrent(api.selectedScrollSnap() + 1);
-    api.on("select", () => {
-      setCurrent(api.selectedScrollSnap() + 1);
-    });
-  }, [api]);
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768); // Tailwind's 'md' breakpoint is at 768px
+    };
+
+    handleResize(); // Set initial state
+    window.addEventListener("resize", handleResize); // Add event listener
+
+    return () => {
+      window.removeEventListener("resize", handleResize); // Clean up
+    };
+  }, []);
 
   const renderStars = (rating: number) => {
     const fullStars = Math.floor(rating);
@@ -77,71 +66,92 @@ export const Testimonial23 = (props: Testimonial23Props) => {
     );
   };
 
+  const nextSlide = () => {
+    setCurrent((prev) => (prev === testimonials.length - 1 ? 0 : prev + 1));
+  };
+  
+  const prevSlide = () => {
+    setCurrent((prev) => (prev === 0 ? testimonials.length - 1 : prev - 1));
+  };
+
+  const handlers = useSwipeable({
+    onSwipedLeft: () => nextSlide(),
+    onSwipedRight: () => prevSlide(),
+    trackMouse: true
+  });
+  
   return (
-    <section className="px-[5%] py-16 md:py-24 lg:py-28 font-switzer">
+    <section className="px-[5%] py-16 md:py-24 lg:py-28 font-switzer select-none">
       <div className="container">
-        <div className="container  mb-12 max-w-lg text-center md:mb-18 lg:mb-20">
+        <div className="container mb-12 max-w-lg text-center md:mb-18 lg:mb-20">
           <h1 className="mb-5 text-5xl font-bold md:mb-6 md:text-9xl lg:text-10xl text-[#ca1c2b]">
             {heading}
           </h1>
           <p className="md:text-lg">{description}</p>
         </div>
 
-        <Carousel
-          setApi={setApi}
-          opts={{
-            loop: true,
-            duration: 20,
-            align: "start",
-          }}
-          className="overflow-hidden bg-background-primary md:px-3.5"
-        >
-          <CarouselContent className="ml-0 md:flex-row">
+        <div className="relative overflow-hidden" {...handlers}>
+          <div
+            className="flex transition-all duration-500 ease-in-out"
+            style={{
+              transform: isMobile
+                ? `translateX(-${current * 100}%)`
+                : `translateX(-${current * (100 / testimonials.length)}%)`,
+            }}
+          >
             {testimonials.map((testimonial, index) => (
-              <CarouselItem
+              <div
                 key={index}
-                className="mr-4 basis-full pl-0 md:mr-0 md:basis-1/2 md:px-4 lg:basis-1/3"
+                className="flex-shrink-0 w-full md:w-1/2 lg:w-1/3 px-4"
               >
                 <div className="flex bg-amber-50 h-[40vh] w-full flex-col items-start justify-between border border-border-primary p-6 md:p-8">
                   <div>{renderStars(testimonial.numberOfStars)}</div>
 
-                  <blockquote className="mb-5 md:mb-6 md:text-md">
+                  <blockquote className="mb-6 md:mb-6 md:text-md text-sm">
                     {testimonial.quote}
                   </blockquote>
-                  <div className="flex w-full flex-col items-start text-left md:w-fit md:flex-row md:items-center">
-                    <LazyLoadImage
-                      
+                  <div className="flex w-full items-start text-left md:w-fit md:flex-row md:items-center">
+                    <img
                       src={testimonial.avatar.src}
-                      alt={testimonial.avatar.alt}
-                      className="mb-4 mr-0 size-12 min-h-12 min-w-12
-                      rounded-full object-cover md:mb-0 md:mr-4"
+                      alt={testimonial.avatar.alt || "User avatar"}
+                      className="mb-10 mr-0 size-12 min-h-12 min-w-12 rounded-full object-cover md:mb-0 md:mr-4"
                     />
-                    <div>
-                      <p className="font-semibold">{testimonial.name}</p>
-                      <p>
+                    <div className=" ml-2 md:ml-0">
+                      <p className="font-semibold md:text-md text-sm ">
+                        {testimonial.name}
+                      </p>
+                      <p className="text-xs md:text-sm">
                         {testimonial.position}, {testimonial.companyName}
                       </p>
                     </div>
                   </div>
                 </div>
-              </CarouselItem>
+              </div>
             ))}
-          </CarouselContent>
-          <CarouselPrevious className="-mt-2 hidden bg-white md:flex md:size-12 lg:size-14" />
-          <CarouselNext className="-mt-2 hidden bg-white md:flex md:size-12 lg:size-14" />
-        </Carousel>
+          </div>
+
+          <button
+            onClick={prevSlide}
+            className="absolute left-0 top-1/2 transform -translate-y-1/2 border  bg-white p-1 md:p-2 rounded-full shadow-md md:block hidden"
+          >
+            <MdArrowBack size={24} />
+          </button>
+          <button
+            onClick={nextSlide}
+            className="absolute right-0 top-1/2 transform -translate-y-1/2 bg-white border  p-1 md:p-2  rounded-full shadow-md md:block hidden"
+          >
+            <MdArrowForward size={24} />
+          </button>
+        </div>
+
         <div className="flex items-center justify-center pt-[30px] sm:pt-[30px]">
           {testimonials.map((_, index) => (
             <button
               key={index}
-              onClick={() => api?.scrollTo(index)}
-              className={clsx(
-                "relative mx-[3px] inline-block size-2 rounded-full",
-                {
-                  "bg-black": current === index + 1,
-                  "bg-neutral-darker/40": current !== index + 1,
-                }
-              )}
+              onClick={() => setCurrent(index)}
+              className={`relative mx-[3px] inline-block size-2 rounded-full ${
+                current === index ? "bg-black" : "bg-neutral-darker/40"
+              }`}
             />
           ))}
         </div>
@@ -149,3 +159,5 @@ export const Testimonial23 = (props: Testimonial23Props) => {
     </section>
   );
 };
+
+export default Testimonial23;

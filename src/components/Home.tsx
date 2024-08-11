@@ -6,24 +6,20 @@ import Hero from "./Hero";
 import InitialLoading from "../partials/InitialLoading";
 import Loader from "../partials/Loader";
 import WhatsAppChatButton from "../partials/Whatsapp";
+import Testimonial23 from "../partials/Testimonials";
+import { Testimonial23Defaults } from "../constants/TestimonialsDeafult";
 
 // Lazy load components
 const LazyHeader19 = lazy(() =>
   import("./Cta").then((module) => ({ default: module.Header19 }))
 );
-const LazyTestimonial21 = lazy(() =>
-  import("../partials/Testimonials").then((module) => ({
-    default: module.Testimonial23,
-  }))
-);
-const LazyLayout366 = lazy(() =>
-  import("./Mentors").then((module) => ({ default: module.Layout366 }))
-);
+
+// const LazyLayout366 = lazy(() =>
+//   import("./Mentors").then((module) => ({ default: module.Layout366 }))
+// );
 const LazyContact5 = lazy(() =>
   import("../partials/contact").then((module) => ({ default: module.Contact5 }))
 );
-
-// Loader component
 
 const Home = () => {
   const [initialLoading, setInitialLoading] = useState(true);
@@ -33,6 +29,7 @@ const Home = () => {
     const intialLoadTimer = setTimeout(() => {
       setInitialLoading(false);
     }, 3000);
+
     // Preload all the lazy-loaded components
     const loadComponents = async () => {
       await Promise.all([
@@ -61,20 +58,19 @@ const Home = () => {
       <Navbar2 />
       <TradingViewWidget />
 
-      {/* Hero section */}
       <Suspense fallback={<Loader />}>
         <Hero />
-
         <LazyHeader19 />
-
-        <LazyTestimonial21 />
-
-        <LazyLayout366 />
-
+        <Testimonial23
+          heading={Testimonial23Defaults.heading}
+          description={Testimonial23Defaults.description}
+          testimonials={Testimonial23Defaults.testimonials}
+        />
+        {/* <LazyLayout366 /> */}
         <LazyContact5 />
       </Suspense>
-      <WhatsAppChatButton />
 
+      <WhatsAppChatButton />
       <Footer />
     </div>
   );

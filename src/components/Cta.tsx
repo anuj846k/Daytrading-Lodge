@@ -35,7 +35,7 @@
                 {heading} <span className="text-[#2866C4]">Daytrading Lodge</span>
               </h1>
               <img src="./Trading.gif" alt="" className="md:hidden block h-40 w-40" />
-              <p className="md:text-lg text-base mb-4">{description}</p>
+              <p className="md:text-lg text-[14px] mb-4">{description}</p>
               <div className="mt-6 flex flex-wrap gap-x-4 gap-y-2 md:mt-8">
                 {buttons.map((button, index) => (
                   <Button
