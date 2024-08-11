@@ -81,7 +81,7 @@ const Testimonial23: React.FC<Props> = ({
   });
   
   return (
-    <section className="px-[5%] py-16 md:py-24 lg:py-28 font-switzer select-none">
+    <section className="px-[5%] py-16 md:py-24 lg:py-28 font-switzer select-none bg-gradient-to-br from-gray-50 to-gray-100">
       <div className="container">
         <div className="container mb-12 max-w-lg text-center md:mb-18 lg:mb-20">
           <h1 className="mb-5 text-5xl font-bold md:mb-6 md:text-9xl lg:text-10xl text-[#ca1c2b]">

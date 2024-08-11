@@ -39,7 +39,7 @@ export const Contact5 = (props: Contact5Props) => {
   };
 
   return (
-    <section className="px-[5%] py-16 md:py-24 lg:py-28 bg-gradient-to-tr from-gray-50">
+    <section className="px-[5%] md:-mt-10 -mt-0 py-16 md:py-24 lg:py-28 bg-gradient-to-tr from-gray-50">
       <div className="container mx-auto grid grid-cols-1 items-start gap-y-12 md:grid-cols-2 md:gap-x-12 lg:gap-x-20 lg:gap-y-16">
         <div>
           <p className="mb-3 font-semibold text-gray-700 md:mb-4">{tagline}</p>

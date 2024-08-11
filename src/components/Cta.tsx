@@ -24,7 +24,7 @@
       ...props,
     } as Props;
     return (
-      <header className="px-[5%] py-20 md:py-24 font-switzer">
+      <header className="px-[5%] py-20 md:py-24 font-switzer ">
         <div className="container mx-auto">
           <div className="grid grid-cols-1  gap-x-48 gap-y-12 md:gap-y-16 lg:grid-cols-2 lg:items-center">
             <div className="order-2 lg:order-1">
