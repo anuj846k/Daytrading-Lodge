@@ -1,83 +1,89 @@
 import logo from "/logo.png";
 import { Link } from "react-router-dom";
+import { FaWhatsapp, FaInstagram, FaYoutube, FaEnvelope, FaPhone } from "react-icons/fa6";
 
-import { FaWhatsapp, FaInstagram, FaYoutube } from "react-icons/fa6";
+interface SocialLinkProps {
+  href: string;
+  Icon: React.ComponentType<React.SVGProps<SVGSVGElement>>;
+  hoverColor: string;
+}
 
-const Footer = () => {
+interface FooterLinkProps {
+  href: string;
+  children: React.ReactNode;
+}
+
+const Footer: React.FC = () => {
   const phoneNumber = "918826895731";
-  const message = encodeURIComponent(
-    "I want to enroll in your mentorship program"
-  );
+  const message = encodeURIComponent("I want to enroll in your mentorship program");
   const whatsappUrl = `https://wa.me/${phoneNumber}?text=${message}`;
+
   return (
-    <footer className="bg-gray-900 text-gray-300 py-12 px-4">
-      <div className="container mx-auto flex flex-col lg:flex-row lg:justify-between lg:items-start">
-        <div className="flex flex-col items-center mb-8 lg:mb-0">
+    <footer className="bg-gray-900 text-gray-300 py-16 px-4">
+      <div className="container mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+        <div className="flex flex-col items-center md:items-start">
           <img
-            className=" h-24 w-26 hover:scale-110 transform transition duration-300 lg:-mt-6 "
+            className="h-24 w-auto hover:scale-110 transform transition duration-300 ease-in-out"
             src={logo}
-            alt="Logo"
+            alt="Daytradinglodge Logo"
           />
-          <p className="mt-4 text-center text-sm lg:text-base">
+          <p className="mt-4 text-center md:text-left text-sm font-light">
             Trading squad built by the best for the aspirant
           </p>
-          <div className="flex justify-evenly w-full mt-4">
-            <Link to={whatsappUrl} target="_blank">
-              <FaWhatsapp
-                className="mx-2 cursor-pointer hover:text-green-500"
-                size={24}
-              />
-            </Link>
-            <Link
-              to="https://www.instagram.com/daytradinglodge/"
-              target="_blank"
-            >
-              <FaInstagram
-                className="mx-2 cursor-pointer hover:text-orange-400"
-                size={24}
-              />
-            </Link>
-            <Link to="https://www.youtube.com/@daytradinglodge">
-              <FaYoutube
-                className="mx-2 cursor-pointer hover:text-red-500"
-                size={24}
-              />
-            </Link>
+          <div className="flex mt-6 space-x-6">
+            <SocialLink href={whatsappUrl} Icon={FaWhatsapp} hoverColor="text-green-400" />
+            <SocialLink href="https://www.instagram.com/daytradinglodge/" Icon={FaInstagram} hoverColor="text-pink-400" />
+            <SocialLink href="https://www.youtube.com/@daytradinglodge" Icon={FaYoutube} hoverColor="text-red-400" />
           </div>
         </div>
-        <div className="flex flex-col items-center mb-8 lg:mb-0">
-          <h2 className="font-bold text-xl lg:text-3xl mb-4">Company</h2>
-          <ul className="text-sm lg:text-base list-none list-inside text-center lg:text-left">
-            <Link to="/">
-              <li className="mb-2 lg:mb-0">Home</li>
-            </Link>
-            <li className="mb-2 lg:mb-0">About Us</li>
-            <li className="mb-2 lg:mb-0">contact us</li>
-            <li className="mb-2 lg:mb-0">Services</li>
-            <li>Privacy Policy</li>
+
+        <div className="flex flex-col items-center md:items-start">
+          <h2 className="font-bold text-2xl mb-6 text-white">Company</h2>
+          <ul className="space-y-3 text-center md:text-left">
+            <FooterLink href="/">Home</FooterLink>
+            <FooterLink href="/about">About Us</FooterLink>
+            <FooterLink href="/contact">Contact Us</FooterLink>
+            <FooterLink href="/services">Services</FooterLink>
+            <FooterLink href="/privacy">Privacy Policy</FooterLink>
           </ul>
         </div>
-        <div className="flex flex-col items-center mb-8 lg:mb-0">
-          <h2 className="font-bold text-xl lg:text-3xl mb-4">Get in Touch</h2>
-          <ul className="text-sm lg:text-base list-none list-inside text-center lg:text-left">
-            <li className="mb-2 lg:mb-0">
-              <a href="tel:+918826895731">+91 8826895731</a>
+
+        <div className="flex flex-col items-center  md:items-start">
+          <h2 className="font-bold text-2xl mb-6 text-white">Get in Touch</h2>
+          <ul className="space-y-3 text-center md:text-left">
+            <li className="flex items-center md:justify-start justify-center ">
+              <FaPhone className="mr-3" />
+              <a href="tel:+918826895731" className="hover:text-white transition duration-300 ease-in-out">+91 8826895731</a>
             </li>
-            <li>
-              <a href="mailto:daytradinglodge@gmail.com">
-                daytradinglodge@gmail.com
-              </a>
+            <li className="flex items-center ">
+              <FaEnvelope className="mr-3" />
+              <a href="mailto:daytradinglodge@gmail.com" className="hover:text-white transition duration-300 ease-in-out">daytradinglodge@gmail.com</a>
             </li>
           </ul>
         </div>
       </div>
-      <hr className="w-full my-8 border-gray-500" />
-      <p className="text-center text-sm lg:text-base">
-        © 2024 <span className="text-[#D71E2E]">Daytradinglodge</span>. All
-        Rights Reserved{" "}
+
+      <hr className="border-gray-700 my-10" />
+
+      <p className="text-center text-sm font-light">
+        © {new Date().getFullYear()} <span className="text-[#D71E2E] font-normal">Daytradinglodge</span>. All Rights Reserved
       </p>
     </footer>
   );
 };
+
+const SocialLink: React.FC<SocialLinkProps> = ({ href, Icon, hoverColor }) => (
+  <Link to={href} target="_blank" rel="noopener noreferrer" className="group">
+    <Icon className={`text-2xl cursor-pointer group-hover:${hoverColor} transition duration-300 ease-in-out`} />
+  </Link>
+);
+
+const FooterLink: React.FC<FooterLinkProps> = ({ href, children }) => (
+  <li>
+    <Link to={href} className="hover:text-white transition duration-300 ease-in-out">
+      {children}
+    </Link>
+  </li>
+);
 
 export default Footer;

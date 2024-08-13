@@ -8,6 +8,7 @@ import Loader from "../partials/Loader";
 import WhatsAppChatButton from "../partials/Whatsapp";
 import Testimonial23 from "../partials/Testimonials";
 import { Testimonial23Defaults } from "../constants/TestimonialsDeafult";
+import ChooseUs from "./ChooseUs";
 
 // Lazy load components
 const LazyHeader19 = lazy(() =>
@@ -61,6 +62,7 @@ const Home = () => {
       <Suspense fallback={<Loader />}>
         <Hero />
         <LazyHeader19 />
+        <ChooseUs/>
         <Testimonial23
           heading={Testimonial23Defaults.heading}
           description={Testimonial23Defaults.description}
