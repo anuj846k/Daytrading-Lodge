@@ -28,7 +28,7 @@ const ChooseUs = () => {
           {features.map((feature, index) => (
             <div 
               key={index}
-              className="bg-amber-50  p-8 rounded-2xl shadow-lg transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 cursor-pointer border border-gray-100"
+              className="bg-amber-50 p-8 rounded-2xl shadow-lg transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 cursor-pointer border border-gray-400"
             >
               <div className="flex items-center justify-center w-20 h-20 mb-6 rounded-full bg-gradient-to-tr from-[#2866C4] to-blue-400 text-white text-4xl">
                 {feature.icon}
