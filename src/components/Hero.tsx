@@ -8,13 +8,12 @@ const Hero = () => {
 
   return (
     <section
-      className="md:min-h-[80vh] min-h-screen flex flex-col md:flex-row md:mb-0 mb-20 bg-gradient-to-br from-gray-50 to-gray-100"
+      className="md:min-h-[80vh] min-h-screen flex flex-col md:flex-row md:mb-0  bg-gradient-to-br from-white via-white to-yellow-100"
       aria-labelledby="hero-heading"
     >
       <div className="left w-full md:w-[70%] flex flex-col justify-center md:items-start items-center p-8 md:p-14 shadow-lg">
         <div className=" text-black ">
           <h1
-            
             className="text-4xl -mt-6 md:-mt-2 md:mb-7 mb-6 md:text-[90px] md:leading-none font-bold "
           >
             <span className="text-[#D71E2E]">Empower</span> Your{" "}
@@ -22,7 +21,7 @@ const Hero = () => {
             
           </h1>
           <img
-            className="md:hidden w-full rounded-full h-auto mb-12 "
+            className="md:hidden w-full rounded-full border   h-auto mb-12 "
             src="./man2.png"
             alt="Person representing trading"
             loading="lazy"

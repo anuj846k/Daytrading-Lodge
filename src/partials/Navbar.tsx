@@ -1,11 +1,11 @@
 "use client";
 
 import { useState } from "react";
-import { Button} from "@relume_io/relume-ui";
+import { Button } from "@relume_io/relume-ui";
 import type { ButtonProps } from "@relume_io/relume-ui";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import {Navbar2Defaults} from "../constants/NavbarDefault";
+import { Navbar2Defaults } from "../constants/NavbarDefault";
 
 type ImageProps = {
   url?: string;
@@ -28,6 +28,12 @@ export type Navbar2Props = React.ComponentPropsWithoutRef<"section"> &
   Partial<Props>;
 
 export const Navbar2 = (props: Navbar2Props) => {
+  const phoneNumber = "918826895731";
+  const message = encodeURIComponent(
+    "I want to enroll in your mentorship program"
+  );
+  const whatsappUrl = `https://wa.me/${phoneNumber}?text=${message}`;
+
   const { logo, navLinks, buttons } = {
     ...Navbar2Defaults,
     ...props,
@@ -40,17 +46,26 @@ export const Navbar2 = (props: Navbar2Props) => {
     <nav className="flex w-full items-center border-b border-border-primary bg-background-primary lg:min-h-18 lg:px-[5%] shadow-md sticky top-0 z-10">
       <div className="mx-auto size-full lg:grid lg:grid-cols-[0.375fr_1fr_0.375fr] lg:items-center lg:justify-between lg:gap-4">
         <div className="flex min-h-16 items-center  justify-between px-[5%] md:min-h-18 lg:min-h-full lg:px-0">
-          <a href={logo.url} className="md:h-20 md:w-40  h-16 w-28 flex items-center justify-center md:-ml-16 -ml-3">
+          <a
+            href={logo.url}
+            className="md:h-20 md:w-40  h-16 w-28 flex items-center justify-center md:-ml-16 -ml-3"
+          >
             <img src={logo.src} alt={logo.alt} />
           </a>
           <div className="flex items-center gap-4 lg:hidden">
-            <div>
-              {buttons.map((button, index) => (
-                <Button key={index} className="w-full px-4 py-2 rounded-full " {...button}>
-                  {button.title}
-                </Button>
-              ))}
-            </div>
+            <Link to={whatsappUrl} target="_blank">
+              <div>
+                {buttons.map((button, index) => (
+                  <Button
+                    key={index}
+                    className="w-full px-4 py-2 rounded-full "
+                    {...button}
+                  >
+                    {button.title}
+                  </Button>
+                ))}
+              </div>
+            </Link>
             <button
               className="-mr-2 flex size-12 flex-col items-center justify-center"
               onClick={() => setIsMobileMenuOpen((prev) => !prev)}
@@ -102,7 +117,11 @@ export const Navbar2 = (props: Navbar2Props) => {
         </motion.div>
         <div className="hidden justify-self-end lg:block">
           {buttons.map((button, index) => (
-            <Button key={index} className="px-8 py-2 -mr-14 rounded-full bg-[#2866C4] text-white font-semibold shadow-lg hover:bg-[#ca1c2b] transition duration-300 ease-in-out transform hover:scale-105 border-none" {...button}>
+            <Button
+              key={index}
+              className="px-8 py-2 -mr-14 rounded-full bg-[#2866C4] text-white font-semibold shadow-lg hover:bg-[#ca1c2b] transition duration-300 ease-in-out transform hover:scale-105 border-none"
+              {...button}
+            >
               {button.title}
             </Button>
           ))}
@@ -111,8 +130,6 @@ export const Navbar2 = (props: Navbar2Props) => {
     </nav>
   );
 };
-
-
 
 Navbar2.displayName = "Navbar2";
 const topLineVariants = {

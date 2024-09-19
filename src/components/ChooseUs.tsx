@@ -1,5 +1,7 @@
+import React from 'react';
+import { motion } from 'framer-motion';
 
-const ChooseUs = () => {
+const ChooseUs: React.FC = () => {
   const features = [
     {
       title: 'Beginner Friendly',
@@ -19,27 +21,37 @@ const ChooseUs = () => {
   ];
 
   return (
-    <div className="w-full  px-4 py-20 md:py-32">
+    <section className="w-full px-4 py-20 md:py-32 bg-gradient-to-b from-white to-blue-50">
       <div className="max-w-7xl mx-auto">
-        <h1 className="mb-16 text-5xl md:text-7xl lg:text-10xl font-extrabold text-center text-[#2866C4]">
+        <motion.h2 
+          className="mb-16 text-4xl md:text-6xl lg:text-10xl font-extrabold text-center text-[#2866C4]"
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+        >
           Why Choose Us?
-        </h1>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+        </motion.h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10">
           {features.map((feature, index) => (
-            <div 
+            <motion.div 
               key={index}
-              className="bg-amber-50 p-8 rounded-2xl shadow-lg transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 cursor-pointer border border-gray-400"
+              className="bg-white p-8 rounded-2xl shadow-lg transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 cursor-pointer border border-gray-200"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: index * 0.2 }}
+              whileHover={{ scale: 1.03 }}
+              whileTap={{ scale: 0.98 }}
             >
-              <div className="flex items-center justify-center w-20 h-20 mb-6 rounded-full bg-gradient-to-tr from-[#2866C4] to-blue-400 text-white text-4xl">
+              <div className="flex items-center justify-center w-20 h-20 mb-6 rounded-full bg-gradient-to-tr from-[#2866C4] to-blue-400 text-white text-4xl shadow-md">
                 {feature.icon}
               </div>
-              <h2 className="mb-4 text-2xl font-bold text-[#ca1c2b]">{feature.title}</h2>
+              <h3 className="mb-4 text-2xl font-bold text-[#ca1c2b]">{feature.title}</h3>
               <p className="text-gray-600 leading-relaxed">{feature.description}</p>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

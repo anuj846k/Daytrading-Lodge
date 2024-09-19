@@ -104,7 +104,7 @@ const Testimonial23: React.FC<Props> = ({
                 key={index}
                 className="flex-shrink-0 w-full md:w-1/2 lg:w-1/3 px-4"
               >
-                <div className="flex bg-amber-50 h-[40vh] w-full flex-col items-start justify-between border border-border-primary p-6 md:p-8">
+                <div className="flex bg-white  h-[40vh] w-full flex-col items-start justify-between border border-gray-300 rounded-xl p-6 md:p-8">
                   <div>{renderStars(testimonial.numberOfStars)}</div>
 
                   <blockquote className="mb-6 md:mb-6 md:text-md text-sm">
