@@ -3,6 +3,7 @@ import Home from "./components/Home";
 import About from "./components/About";
 import Services from "./components/Services";
 import ContactUs from "./components/ContactUs";
+import Notfound from "./constants/Notfound";
 
 const App = () => {
   return (
@@ -12,6 +13,7 @@ const App = () => {
         <Route path="/about" element={<About />} />
         <Route path="/services" element={<Services />} />
         <Route path="/contact" element={<ContactUs />} />
+        <Route path="*" element={<Notfound />} />
       </Routes>
     </div>
   );
